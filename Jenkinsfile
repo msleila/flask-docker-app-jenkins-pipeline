@@ -16,6 +16,7 @@ pipeline {
                 echo 'Cleaning up workspace...'
                 deleteDir()                                    // Supprime les fichiers du workspace
             }
+        }
         stage('Stubs-Replacement'){
             steps {
                 // 'STUB_VALUE' Environment Variable declared in Jenkins Configuration 
