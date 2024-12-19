@@ -5,7 +5,17 @@ pipeline {
         CONTAINER_NAME = "flask-container"
         STUB_VALUE = "200"
     }
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+        skipStagesAfterUnstable()
+    }
+  
     stages {
+        stage('Prepare Environment') {
+            steps {
+                echo 'Cleaning up workspace...'
+                deleteDir()                                    // Supprime les fichiers du workspace
+            }
         stage('Stubs-Replacement'){
             steps {
                 // 'STUB_VALUE' Environment Variable declared in Jenkins Configuration 
